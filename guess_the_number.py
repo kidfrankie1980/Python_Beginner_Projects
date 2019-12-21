@@ -15,3 +15,5 @@ while count != guess:
     elif choice > golden_number:
         count += 1
         print("Your number is too large! You have ", guess-count, "left")
+        
+        
