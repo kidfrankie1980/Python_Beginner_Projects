@@ -3,16 +3,17 @@ import random
 # CREATED 12.21.19
 hands = ["rock", "paper", "scissors"]
 choices = int(0)
-tries = int(3)
+bestof = int(0)
 player_points = int(0)
 computer_points = int(0)
-# goes up to five rounds for player
-while player_points != 5:
+# goes up to bestof 5 rounds excluding draws or incorrect inputs
+while bestof != 5:
     computer_choice = random.choice(hands)
     player_choice = input("Please choose rock, paper, or scissors").lower().strip()
     if player_choice == computer_choice:  # computer and player choice are same
         print("Try again, you guys got the same thing!\n")
     elif player_choice == "rock":  # player chooses rock.
+        bestof += 1
         if computer_choice == "scissors":
             player_points += 1
             print(player_choice, "beats: ", computer_choice, ". You won this round.\n")
@@ -20,6 +21,7 @@ while player_points != 5:
             computer_points += 1
             print("Computer chose: ", computer_choice, "Better luck next time.\n")
     elif player_choice == "paper":  # player chooses paper
+        bestof +=1
         if computer_choice == "rock":
             computer_points += 1
             print("Computer chose: ", computer_choice, "Better luck next time!\n")
@@ -27,6 +29,7 @@ while player_points != 5:
             player_points += 1
             print(player_choice, "beats: ", computer_choice, "You won this round.\n")
     elif player_choice == "scissors":  # player chooses scissors
+        bestof +=1
         if computer_choice == "rock":
             print("Computer chose:", computer_choice, ". Better luck next time!\n")
         else:  # computer chose paper, you chose scissors:
